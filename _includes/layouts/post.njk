@@ -5,6 +5,15 @@ templateClass: tmpl-post
 <h1>{{ title }}</h1>
 
 <time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+
+<ul>
+  {%- if author %}<li class="meta"><span class="label">author</span> <span class="value">{{ author }}</span></li>{% endif %}
+  {%- if title_origin %}<li class="meta"><span class="label">title_origin</span> <span class="value">{{ title_origin }}</span></li>{% endif %}
+  {%- if translator %}<li class="meta"><span class="label">translator</span> <span class="value">{{ translator }}</span></li>{% endif %}
+  {%- if url_origin %}<li class="meta"><span class="label">url_origin</span> <span class="value">{{ url_origin }}</span></li>{% endif %}
+  {%- if description %}<li class="meta"><span class="label">description</span> <span class="value">{{ description }}</span></li>{% endif %}
+</ul>
+
 {%- for tag in tags | filterTagList -%}
 {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
 <a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
